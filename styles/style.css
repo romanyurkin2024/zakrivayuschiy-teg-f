@@ -4,13 +4,117 @@
 ✦ like-icon — для svg-иконки анимированного сердца
 ✦ card__like-button — для кнопки Like рядом с иконкой
 ✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ card__icon-button — для кнопки, оборачивающей иконку
 ✦ is-liked — для обозначения состояния лайкнутой иконки в виде сердца
 ✦ button__text — для обозначения текстового элемента внутри кнопки
-
 */
 
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
+  font-family: var(--main-font-family, sans-serif);
+  font-variation-settings: 'wght' var(--main-text-wght, 400);
+  background-image: var(--page-background-image);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  display: grid;
+  gap: 100px;
+}
+
+.container {
+  inline-size: var(--main-container-width, clamp(23.4375rem, 16.2852rem + 30.5164vw, 43.75rem));
+  margin: 0 auto;
+}
+
+.header__container {
+  margin-top: 100px;
+  background-color: #fff;
+  padding: var(--header-padding-block, clamp(7.5rem, 7.3239rem + 0.7512vw, 8rem)) 0;
+  border: 2px solid #000;
+}
+
+.header__item {
+  font-weight: 400;
+  text-align: center;
+  text-transform: uppercase;
+  color: #000;
+}
+
+.header__logo {
+  font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
+  font-family: var(--accent-font-family, sans-serif);
+}
+
+.header__title {
+  font-family: var(--accent-font-family, sans-serif);
+  font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
+  margin-block-start: 20px;
+}
+
+.card {
+  border: 2px solid #000;
+  background-color: #fff;
+}
+
+.card__image {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+  display: block;
+  object-position: center;
+}
+
+.card__image-block {
+  border-bottom: 2px solid #000;
+}
+
+.card__title {
+  font-family: var(--main-font-family);
+  font-variation-settings: 'wght' 700;
+  font-size: 18px;
+  padding: 4px 10px;
+  color: #000;
+  border-bottom: 2px solid #000;
+}
+
+.card__content {
+  padding: 25px;
+}
+
+.card__description, .card__memories {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+  color: #000;
+}
+
+.card__memories {
+  padding-block-start: 27px;
+}
+
+.card__buttons-group {
+  margin-block-start: 25px;
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  align-items: stretch;
+}
+
+.button__text {
+  font-family: var(--accent-font-family, sans-serif);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 0.9;
+  color: #000;
+}
+
+.card__icon-button {
+  border: none;
+}
+
+.card__like-button{
+  block-size: 38px;
+  inline-size: 130px;
+  text-align: center;
+  border: 2px solid #000;
 }
