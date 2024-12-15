@@ -26,6 +26,11 @@
   margin: 0 auto;
 }
 
+.main__container {
+  display: grid;
+  gap: 50px;
+}
+
 .header__container {
   margin-top: 100px;
   background-color: #fff;
@@ -117,4 +122,24 @@
   inline-size: 130px;
   text-align: center;
   border: 2px solid #000;
+}
+
+.grayscale {
+  filter: grayscale(70%);
+}
+
+.save__progress-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #000;
+  inline-size: clamp(19.375rem, 18.7368rem + 2.723vw, 21.1875rem);
+  margin: 0 auto;
+  background-color: #FFF;
+  padding-block: 15px;
+}
+
+.button__text {
+  margin-block-start: 8px;
 }
