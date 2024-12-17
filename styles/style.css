@@ -13,7 +13,9 @@
   min-block-size: 100dvb;
   font-family: var(--main-font-family, sans-serif);
   font-variation-settings: "wght" var(--main-text-wght, 400);
-  background-image: var(--page-background-image);
+  background-image: var(--page-background-image, repeating-linear-gradient(to right, #d3d3d3 0px, #d3d3d3 2px, transparent 2px, transparent 4px),
+  repeating-linear-gradient(to bottom, #d3d3d3 0px, #d3d3d3 2px, transparent 2px, transparent 4px), 
+  linear-gradient(#e7e7e7 0.01%, #1a1a1a 100%));
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
@@ -83,7 +85,7 @@
 }
 
 .card__title {
-  font-family: var(--main-font-family);
+  font-family: var(--main-font-family, sans-serif);
   font-variation-settings: "wght" 700;
   font-size: 18px;
   padding: 4px 10px;
@@ -281,7 +283,7 @@
   z-index: 1;
   mix-blend-mode: hard-light;
   opacity: 0.5;
-  font-family: var(--accent-font-family);
+  font-family: var(--accent-font-family, sans-serif);
   font-weight: 400;
   font-size: 14px;
   color: #000;
@@ -290,7 +292,7 @@
 }
 
 .dialog[open] {
-  font-family: var(--accent-font-family);
+  font-family: var(--accent-font-family, sans-serif);
   font-weight: 400;
   font-size: 14px;
   line-height: 150%;
@@ -307,6 +309,7 @@
 
 .dialog__button {
   cursor: pointer;
+  border: 2px solid #000;
   padding-block: 12.5px;
   inline-size: 100%;
   margin-block-start: 30px;
