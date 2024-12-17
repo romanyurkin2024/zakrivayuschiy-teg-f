@@ -35,7 +35,6 @@
   background-size: cover;
   background-attachment: fixed;
   display: grid;
-  gap: 100px;
 }
 
 .container {
@@ -44,6 +43,10 @@
     clamp(23.4375rem, 16.2852rem + 30.5164vw, 43.75rem)
   );
   margin: 0 auto;
+}
+
+.main {
+  margin-block: 100px;
 }
 
 .main__container {
@@ -395,7 +398,6 @@ body:has(dialog[open]) {
     padding-inline: 40px;
   }
 }
-
 
 .sparks {
   opacity: 0;
