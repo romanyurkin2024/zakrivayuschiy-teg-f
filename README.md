@@ -1,0 +1,1 @@
+https://romanyurkin2024.github.io/zakrivayuschiy-teg-f/
