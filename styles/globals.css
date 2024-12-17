@@ -41,6 +41,10 @@ input {
   outline: none;
 }
 
+button:focus {
+  outline: none;  /* Убирает контур фокуса */
+}
+
 ul,
 ol {
   list-style: none;

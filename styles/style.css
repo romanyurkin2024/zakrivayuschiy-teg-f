@@ -11,11 +11,26 @@
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
-  font-family: var(--main-font-family, sans-serif);
+  font-family: var(--main-font-family, sans-serif), sans-serif;
   font-variation-settings: "wght" var(--main-text-wght, 400);
-  background-image: var(--page-background-image, repeating-linear-gradient(to right, #d3d3d3 0px, #d3d3d3 2px, transparent 2px, transparent 4px),
-  repeating-linear-gradient(to bottom, #d3d3d3 0px, #d3d3d3 2px, transparent 2px, transparent 4px), 
-  linear-gradient(#e7e7e7 0.01%, #1a1a1a 100%));
+  background-image: var(
+    --page-background-image,
+    repeating-linear-gradient(
+      to right,
+      #d3d3d3 0px,
+      #d3d3d3 2px,
+      transparent 2px,
+      transparent 4px
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      #d3d3d3 0px,
+      #d3d3d3 2px,
+      transparent 2px,
+      transparent 4px
+    ),
+    linear-gradient(#e7e7e7 0.01%, #1a1a1a 100%)
+  );
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
@@ -56,11 +71,11 @@
 
 .header__logo {
   font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
-  font-family: var(--accent-font-family, sans-serif);
+  font-family: var(--accent-font-family, sans-serif), sans-serif;
 }
 
 .header__title {
-  font-family: var(--accent-font-family, sans-serif);
+  font-family: var(--accent-font-family, sans-serif), sans-serif;
   font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
   margin-block-start: 20px;
 }
@@ -85,7 +100,7 @@
 }
 
 .card__title {
-  font-family: var(--main-font-family, sans-serif);
+  font-family: var(--main-font-family, sans-serif), sans-serif;
   font-variation-settings: "wght" 700;
   font-size: 18px;
   padding: 4px 10px;
@@ -97,12 +112,15 @@
   padding: 25px;
 }
 
-.card__description,
-.card__memories {
+.card__description {
   font-weight: 400;
   font-size: 18px;
   line-height: 21px;
   color: #000;
+}
+
+.card__description:nth-child(2n) {
+  padding-block-start: 27px;
 }
 
 .blur {
@@ -133,10 +151,6 @@
   filter: hue-rotate(100deg) blur(1px) contrast(0.5) saturate(1);
 }
 
-.card__memories {
-  padding-block-start: 27px;
-}
-
 .card__buttons-group {
   margin-block-start: 25px;
   display: flex;
@@ -146,7 +160,7 @@
 }
 
 .button__text {
-  font-family: var(--accent-font-family, sans-serif);
+  font-family: var(--accent-font-family, sans-serif), sans-serif;
   font-weight: 400;
   font-size: 14px;
   color: #fff;
@@ -190,14 +204,34 @@
 
 .save__progress-button {
   inline-size: clamp(19.375rem, 18.7368rem + 2.723vw, 21.1875rem);
-  margin: 0 auto 100px auto;
+  margin: 0 auto;
   background-color: #fff;
   padding-block: 15px;
 }
 
-.card__like-button:focus,
-.save__progress-button:focus {
+.dialog__button {
+  padding-block: 12.5px;
+  inline-size: 100%;
+  margin-block-start: 30px;
+  box-shadow: none;
+}
+
+.btn-common:focus {
   box-shadow: 2px 2px 0 0 #000;
+}
+
+.btn-common::before {
+  content: "";
+  background-color: #000;
+  inset: 0;
+  position: absolute;
+  transform: scaleX(0) translateX(-100%);
+  transform-origin: left;
+  transition: transform 0.5s ease-in-out;
+}
+
+.btn-common:hover::before {
+  transform: scaleX(1) translateX(0);
 }
 
 .save__progress-button .button__text {
@@ -283,7 +317,7 @@
   z-index: 1;
   mix-blend-mode: hard-light;
   opacity: 0.5;
-  font-family: var(--accent-font-family, sans-serif);
+  font-family: var(--accent-font-family, sans-serif), sans-serif;
   font-weight: 400;
   font-size: 14px;
   color: #000;
@@ -292,7 +326,7 @@
 }
 
 .dialog[open] {
-  font-family: var(--accent-font-family, sans-serif);
+  font-family: var(--accent-font-family, sans-serif), sans-serif;
   font-weight: 400;
   font-size: 14px;
   line-height: 150%;
@@ -305,14 +339,6 @@
 .dialog[open]::backdrop {
   background-color: #000;
   opacity: 0.75;
-}
-
-.dialog__button {
-  cursor: pointer;
-  border: 2px solid #000;
-  padding-block: 12.5px;
-  inline-size: 100%;
-  margin-block-start: 30px;
 }
 
 .dialog__content {
@@ -370,21 +396,6 @@ body:has(dialog[open]) {
   }
 }
 
-.card__like-button::before,
-.save__progress-button::before {
-  content: "";
-  background-color: #000;
-  inset: 0;
-  position: absolute;
-  transform: scaleX(0) translateX(-100%);
-  transform-origin: left;
-  transition: transform 0.5s ease-in-out;
-}
-
-.card__like-button:hover::before,
-.save__progress-button:hover::before {
-  transform: scaleX(1) translateX(0);
-}
 
 .sparks {
   opacity: 0;
