@@ -188,7 +188,7 @@
 
 .save__progress-button {
   inline-size: clamp(19.375rem, 18.7368rem + 2.723vw, 21.1875rem);
-  margin: 0 auto;
+  margin: 0 auto 100px auto;
   background-color: #fff;
   padding-block: 15px;
 }
