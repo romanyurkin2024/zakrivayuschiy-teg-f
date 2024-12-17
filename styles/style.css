@@ -77,6 +77,7 @@
 }
 
 .card__image-block {
+  position: relative;
   overflow: hidden;
   border-bottom: 3px solid #000;
 }
@@ -122,6 +123,10 @@
   filter: saturate(4);
 }
 
+.grayscale {
+  filter: grayscale(70%);
+}
+
 .multi-filter {
   filter: hue-rotate(100deg) blur(1px) contrast(0.5) saturate(1);
 }
@@ -133,9 +138,9 @@
 .card__buttons-group {
   margin-block-start: 25px;
   display: flex;
-  gap: 12px;
   justify-content: flex-end;
-  align-items: center;
+  align-items: stretch;
+  gap: 6px;
 }
 
 .button__text {
@@ -150,49 +155,47 @@
 
 .card__icon-button {
   border: none;
+  outline: 2px solid transparent;
+}
+
+.card__icon-button:focus {
+  outline: none;
+  transition: outline 0.3s ease;
+}
+
+.card__icon-button:focus-visible {
+  outline: 2px solid #000;
+  transition: outline 0.3s ease;
+}
+
+.btn-common {
+  display: flex;
+  position: relative;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  transition: box-shadow 0.3s ease-in-out;
+  overflow: hidden;
+  border: 2px solid #000;
+  text-align: center;
+  outline: none;
 }
 
 .card__like-button {
   block-size: 38px;
-  outline: none;
-  transition: box-shadow 0.3s ease-in-out;
   inline-size: 130px;
-  text-align: center;
-  border: 2px solid #000;
-}
-
-.card__like-button:focus {
-  box-shadow: 2px 2px 0 0 #000;
-}
-
-.grayscale {
-  filter: grayscale(70%);
 }
 
 .save__progress-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  position: relative;
-  border: 2px solid #000;
   inline-size: clamp(19.375rem, 18.7368rem + 2.723vw, 21.1875rem);
   margin: 0 auto;
   background-color: #fff;
   padding-block: 15px;
 }
 
-.like-icon {
-  display: block;
-}
-
-.card__like-button {
-  display: flex;
-  position: relative;
-  align-items: center;
-  overflow: hidden;
-  justify-content: center;
-  cursor: pointer;
+.card__like-button:focus,
+.save__progress-button:focus {
+  box-shadow: 2px 2px 0 0 #000;
 }
 
 .save__progress-button .button__text {
@@ -201,15 +204,153 @@
 
 .save__progress-icon {
   inline-size: 21px;
+  transition: box-shadow 0.3s ease-in-out;
   block-size: 21px;
   position: relative;
   color: #fff;
   z-index: 1;
+  mix-blend-mode: difference;
+}
+
+.like-icon {
+  display: block;
+  cursor: pointer;
+}
+
+.core {
+  fill: transparent;
+  transition: fill 0.3s linear 0.03s;
+}
+
+.main-body {
+  fill: transparent;
+  transition: fill 0.3s linear 0.05s;
+}
+
+.like-icon:hover .main-body,
+.like-icon:hover .core {
+  fill: var(--svg-contour-color, black);
+  transition: fill 0.3s linear;
+}
+
+.like-icon:active .main-body,
+.like-icon:active .core {
+  fill: var(--like-icon-fill-color, black);
+  transition: fill 0.3s linear;
+}
+
+.like-icon.is-liked .main-body {
+  fill: var(--like-icon-fill-color, black);
+  transition: fill 0.3s linear 0.05s;
+}
+
+.like-icon.is-liked .core {
+  fill: var(--like-icon-fill-color, black);
+  transition: fill 0.3s linear 0.03s;
+}
+
+.like-icon .contour {
+  fill: var(--svg-contour-color, black);
+  transition: fill 0.1s linear;
+}
+
+.like-icon.is-liked .contour {
+  fill: var(--like-icon-fill-color, black);
+  transition: fill 0.3s linear 0.06s;
+}
+
+.like-icon.is-liked .heart {
+  animation-name: heart_animation;
+  transform-origin: center;
+  animation-delay: 0.1s;
+  animation-duration: 0.3s;
+  animation-timing-function: ease-in;
+}
+
+.like-icon.is-liked .sparks {
+  animation-name: show_sparks;
+  animation-duration: 0.3s;
+  animation-delay: 0.3s;
+  animation-timing-function: ease-in;
+}
+
+.card__image-label {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  z-index: 1;
+  mix-blend-mode: hard-light;
+  opacity: 0.5;
+  font-family: var(--accent-font-family);
+  font-weight: 400;
+  font-size: 14px;
+  color: #000;
+  text-shadow: 1px 1px var(--text-stroke-color, #fff),
+    -1px -1px var(--text-stroke-color, #fff);
+}
+
+.dialog[open] {
+  font-family: var(--accent-font-family);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  text-transform: uppercase;
+  color: #000;
+  border: 2px solid #000;
+  padding: 30px;
+}
+
+.dialog[open]::backdrop {
+  background-color: #000;
+  opacity: 0.75;
+}
+
+.dialog__button {
+  cursor: pointer;
+  padding-block: 12.5px;
+  inline-size: 100%;
+  margin-block-start: 30px;
+}
+
+.dialog__content {
+  display: flex;
+  align-items: center;
+}
+
+.dialog__text {
+  margin-inline-start: 20px;
+  inline-size: clamp(12.375rem, 11.5827rem + 3.3803vw, 14.625rem);
+}
+
+.dialog-icon {
+  inline-size: 39px;
+  block-size: 39px;
+  position: relative;
+}
+
+body:has(dialog[open]) {
+  overflow: hidden;
+}
+
+@supports (
+  (text-stroke: 1px var(--text-stroke-color, #fff)) or
+    (-webkit-text-stroke: 1px var(--text-stroke-color, #fff))
+) {
+  .card__image-label {
+    -webkit-text-stroke: 1px var(--text-stroke-color, #fff);
+    text-stroke: 1px var(--text-stroke-color, #fff);
+    text-shadow: none;
+  }
 }
 
 @media (width <= 375px) {
   .save__progress-button {
     flex-direction: column;
+  }
+
+  .card__image-label {
+    right: 11px;
+    top: 23px;
   }
 
   .save__progress-icon {
@@ -219,6 +360,10 @@
 
   .save__progress-button .button__text {
     margin: 8px 0 0 0;
+  }
+
+  .dialog[open] {
+    padding-inline: 40px;
   }
 }
 
@@ -238,6 +383,6 @@
   transform: scaleX(1) translateX(0);
 }
 
-.save__progress-button {
-  cursor: pointer;
+.sparks {
+  opacity: 0;
 }
